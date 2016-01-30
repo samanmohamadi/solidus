@@ -5,6 +5,7 @@ module Spree
     #   These attributes should already have been filtered.
     #   * :payments_attributes attributes
     def initialize(order, attributes, request_env: nil)
+      debugger
       @order = order
       @attributes = attributes.dup
       @payments_attributes = @attributes.delete(:payments_attributes) || []
@@ -16,7 +17,7 @@ module Spree
     def apply
       assign_order_attributes
       assign_payments_attributes
-
+      order.bill_address = order.ship_address
       if order.save
         order.set_shipments_cost if order.shipments.any?
         true

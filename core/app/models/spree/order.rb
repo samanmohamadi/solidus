@@ -77,7 +77,7 @@ module Spree
     end
 
     accepts_nested_attributes_for :line_items
-    accepts_nested_attributes_for :bill_address
+    # accepts_nested_attributes_for :bill_address, :reject_if => proc {|a| false}
     accepts_nested_attributes_for :ship_address
     accepts_nested_attributes_for :payments
     accepts_nested_attributes_for :shipments
